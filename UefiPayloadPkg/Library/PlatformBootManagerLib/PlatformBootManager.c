@@ -322,27 +322,27 @@ PlatformBootManagerAfterConsole (
   //
   // Register UEFI Shell
   //
-  PlatformRegisterFvBootOption (&gUefiShellFileGuid, L"UEFI Shell", LOAD_OPTION_ACTIVE);
+//   PlatformRegisterFvBootOption (&gUefiShellFileGuid, L"UEFI Shell", LOAD_OPTION_ACTIVE);
 
-  if (FixedPcdGetBool (PcdBootManagerEscape)) {
-    BootLogoUpdateProgress (
-      White,
-      Black,
-      L"Press ESC for Boot Options/Settings",
-      White,
-      0,
-      0
-      );
-  } else {
-    BootLogoUpdateProgress (
-      White,
-      Black,
-      L"Press F2 or Down for Boot Options/Settings",
-      White,
-      0,
-      0
-      );
-  }
+//   if (FixedPcdGetBool (PcdBootManagerEscape)) {
+//     BootLogoUpdateProgress (
+//       White,
+//       Black,
+//       L"Press ESC for Boot Options/Settings",
+//       White,
+//       0,
+//       0
+//       );
+//   } else {
+//     BootLogoUpdateProgress (
+//       White,
+//       Black,
+//       L"Press F2 or Down for Boot Options/Settings",
+//       White,
+//       0,
+//       0
+//       );
+//   }
 
   // invoke SMM handler to put BYT eMMC/SD devices into ACPI mode for OS
   IoWrite8(0xb2, 0xcd);
