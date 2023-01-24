@@ -228,7 +228,7 @@ PlatformBootManagerBeforeConsole (
 {
   EFI_INPUT_KEY                 Enter;
   EFI_INPUT_KEY                 CustomKey;
-  EFI_INPUT_KEY                 Down;
+//  EFI_INPUT_KEY                 Down;
   EFI_BOOT_MANAGER_LOAD_OPTION  BootOption;
 
   //
@@ -238,30 +238,25 @@ PlatformBootManagerBeforeConsole (
   Enter.UnicodeChar = CHAR_CARRIAGE_RETURN;
   EfiBootManagerRegisterContinueKeyOption (0, &Enter, NULL);
 
-  if (FixedPcdGetBool (PcdBootManagerEscape)) {
-    //
-    // Map Esc to Boot Manager Menu
-    //
-    CustomKey.ScanCode    = SCAN_ESC;
-    CustomKey.UnicodeChar = CHAR_NULL;
-  } else {
-    //
-    // Map Esc to Boot Manager Menu
-    //
-    CustomKey.ScanCode    = SCAN_F2;
-    CustomKey.UnicodeChar = CHAR_NULL;
-  }
+  //
+  // Map CTRL+ALT+SHIFT+DOWN to Boot Manager Menu
+  //
+  CustomKey.ScanCode    = SCAN_DOWN;
+  CustomKey.UnicodeChar = CHAR_NULL;
+ 
 
   EfiBootManagerGetBootManagerMenu (&BootOption);
-  EfiBootManagerAddKeyOptionVariable (NULL, (UINT16)BootOption.OptionNumber, 0, &CustomKey, NULL);
+  EfiBootManagerAddKeyOptionVariable (NULL, (UINT16)BootOption.OptionNumber,
+      EFI_BOOT_MANAGER_SHIFT_PRESSED | EFI_BOOT_MANAGER_CONTROL_PRESSED |
+	  EFI_BOOT_MANAGER_ALT_PRESSED, &CustomKey, NULL);
 
   //
   // Also add Down key to Boot Manager Menu since some serial terminals don't support F2 key.
   //
-  Down.ScanCode    = SCAN_DOWN;
-  Down.UnicodeChar = CHAR_NULL;
-  EfiBootManagerGetBootManagerMenu (&BootOption);
-  EfiBootManagerAddKeyOptionVariable (NULL, (UINT16)BootOption.OptionNumber, 0, &Down, NULL);
+//   Down.ScanCode    = SCAN_DOWN;
+//   Down.UnicodeChar = CHAR_NULL;
+//   EfiBootManagerGetBootManagerMenu (&BootOption);
+//   EfiBootManagerAddKeyOptionVariable (NULL, (UINT16)BootOption.OptionNumber, 0, &Down, NULL);
 
   //
   // Install ready to lock.
