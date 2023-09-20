@@ -308,6 +308,8 @@ GetDeviceNameFromProduct (
   //CML
   else if (!StrCmp(Product, L"Akemi")) {
     StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"Lenovo Ideapad Flex 5 Chromebook");
+  } else if (!StrCmp(Product, L"Ambassador")) {
+    StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"CTL Meet Compute System GQE15C");
   } else if (!StrCmp(Product, L"Dragonair")) {
     StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"HP Chromebook x360 14c");
   } else if (!StrCmp(Product, L"Drallion")) {
@@ -452,6 +454,8 @@ GetDeviceNameFromProduct (
     StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"HP Elite c640 14 inch G3 Chromebook");
   } else if (!StrCmp(Product, L"Banshee")) {
     StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"Framework Laptop Chromebook Edition");
+  } else if (!StrCmp(Product, L"Constitution")) {
+    StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"Google Meet Series Two");
   } else if (!StrCmp(Product, L"Crota")) {
     StrCatS (*DeviceName, 0x60 / sizeof (CHAR16), L"Dell Latitude 5430 Chromebook");
   } else if (!StrCmp(Product, L"Crota360")) {
